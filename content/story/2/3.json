@@ -1,0 +1,46 @@
+{
+  "storyId": "2",
+  "pageId": "3",
+  "content": [
+    {
+      "text": "測試內容 p3",
+      "position": {
+        "x": 930,
+        "y": 800
+      }
+    }
+  ],
+  "options": [
+    {
+      "text": "沒有功能",
+      "next": "3",
+      "position": {
+        "x": 620,
+        "y": 550
+      }
+    },
+    {
+      "text": "回上一頁",
+      "next": "2",
+      "position": {
+        "x": 960,
+        "y": 550
+      }
+    },
+    {
+      "text": "回一開始",
+      "next": "1",
+      "position": {
+        "x": 1300,
+        "y": 550
+      }
+    }
+  ],
+  "background": {
+    "src": "/storybook/2/picture/3.png"
+  },
+  "sound": {
+    "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",
+    "volume": 0.5
+  }
+}

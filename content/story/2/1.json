@@ -1,0 +1,30 @@
+{
+  "storyId": "2",
+  "pageId": "1",
+  "content": [
+    {
+      "text": "故事的起點（字還不能調大小）",
+      "position": {
+        "x": 950,
+        "y": 300
+      }
+    }
+  ],
+  "options": [
+    {
+      "text": "開始（這是選項，點我）",
+      "next": "2",
+      "position": {
+        "x": 970,
+        "y": 650
+      }
+    }
+  ],
+  "background": {
+    "src": "/storybook/2/picture/1.png"
+  },
+  "sound": {
+    "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",
+    "volume": 0.5
+  }
+}

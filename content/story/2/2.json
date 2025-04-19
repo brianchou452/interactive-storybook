@@ -1,0 +1,54 @@
+{
+  "storyId": "2",
+  "pageId": "2",
+  "content": [
+    {
+      "text": "這是測試內容 P2 測試測試",
+      "position": {
+        "x": 930,
+        "y": 800
+      }
+    }
+  ],
+  "options": [
+    {
+      "text": "選項1（回上頁）",
+      "next": "1",
+      "position": {
+        "x": 500,
+        "y": 650
+      }
+    },
+    {
+      "text": "選項2",
+      "next": "3",
+      "position": {
+        "x": 750,
+        "y": 650
+      }
+    },
+    {
+      "text": "選項3",
+      "next": "3",
+      "position": {
+        "x": 1050,
+        "y": 650
+      }
+    },
+    {
+      "text": "選項4",
+      "next": "3",
+      "position": {
+        "x": 1300,
+        "y": 650
+      }
+    }
+  ],
+  "background": {
+    "src": "/storybook/2/picture/2.png"
+  },
+  "sound": {
+    "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",
+    "volume": 0.5
+  }
+}
