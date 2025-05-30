@@ -39,7 +39,7 @@ const contents = ref(
   }[]
 );
 const characters = ref(
-  (currentStory.value?.character || []) as unknown as {
+  (currentStory.value?.characters || []) as unknown as {
     name: string;
     src: string;
     position: {
@@ -50,11 +50,6 @@ const characters = ref(
 );
 
 function updateStory() {
-  if (typeof window !== "undefined" && currentStory.value?.sound) {
-    const audio = new Audio(currentStory.value.sound.src);
-    audio.volume = currentStory.value.sound.volume;
-    audio.play();
-  }
   if (currentStory.value?.background) {
     imgSrc.value = currentStory.value.background.src;
   }
@@ -121,8 +116,23 @@ function onImgLoad() {
 <template>
   <div v-if="currentStory">
     <ClientOnly>
-      <div class="p-0 m-0 h-full w-full">
+      <div class="p-0 m-0 h-dvh w-full">
         <div style="position: relative; display: inline-block">
+          <img
+            v-if="imgSrc"
+            ref="imgRef"
+            :src="imgSrc"
+            alt="動態圖片"
+            style="
+              z-index: 0;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            "
+            @load="onImgLoad"
+          />
           <div
             v-for="content in contents"
             :key="content.text"
@@ -175,14 +185,6 @@ function onImgLoad() {
               class="p-0 m-0 object-contain h-full z-0"
             />
           </div>
-          <img
-            v-if="imgSrc"
-            ref="imgRef"
-            :src="imgSrc"
-            alt="動態圖片"
-            class="p-0 m-0 object-contain h-full"
-            @load="onImgLoad"
-          />
         </div>
       </div>
     </ClientOnly>
