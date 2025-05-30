@@ -26,15 +26,25 @@ const options = ref(
   (currentStory.value?.options || []) as unknown as {
     text: string;
     next: string;
-    position: { x: number; y: number };
+    position: { x: number | string; y: number | string };
   }[]
 );
 const contents = ref(
   (currentStory.value?.content || []) as unknown as {
     text: string;
     position: {
-      x: number;
-      y: number;
+      x: number | string;
+      y: number | string;
+    };
+  }[]
+);
+const characters = ref(
+  (currentStory.value?.character || []) as unknown as {
+    name: string;
+    src: string;
+    position: {
+      x: number | string;
+      y: number | string;
     };
   }[]
 );
@@ -60,6 +70,15 @@ function updateStory() {
       text: content.text,
       position: content.position,
     }));
+  }
+  if (Array.isArray(currentStory.value?.characters)) {
+    characters.value = currentStory.value.characters.map((character) => ({
+      name: character.text,
+      src: character.src,
+      position: character.position,
+    }));
+  } else {
+    characters.value = [];
   }
 }
 
@@ -114,7 +133,7 @@ function onImgLoad() {
               // transform: 'translate(-50%, -50%)',
               pointerEvents: 'none',
             }"
-            class="w-full"
+            class="w-full z-30"
           >
             <p class="p-2">{{ content.text }}</p>
           </div>
@@ -127,15 +146,34 @@ function onImgLoad() {
               left: `${calculatePosition(option.position).x}px`,
               transform: 'translate(-50%, -50%)',
             }"
+            class="bg-orange-700 px-4 py-2 rounded z-20"
           >
             <NuxtLink
               :to="{
                 name: 'story-id',
                 params: { id: `${storyId}X${option.next}` },
               }"
+              class="text-white"
             >
               {{ option.text }}
             </NuxtLink>
+          </div>
+          <div
+            v-for="character in characters"
+            :key="character.src"
+            :style="{
+              position: 'absolute',
+              top: `${calculatePosition(character.position).y}px`,
+              left: `${calculatePosition(character.position).x}px`,
+              // transform: 'translate(-50%, -50%)',
+            }"
+            class="z-10"
+          >
+            <img
+              :src="character.src"
+              alt="character"
+              class="p-0 m-0 object-contain h-full z-0"
+            />
           </div>
           <img
             v-if="imgSrc"

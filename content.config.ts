@@ -16,8 +16,8 @@ export default defineContentConfig({
                     z.object({
                         text: z.string(),
                         position: z.object({
-                            x: z.number(),
-                            y: z.number()
+                            x: z.number().or(z.string()),
+                            y: z.number().or(z.string())
                         }),
                     })
                 ),
@@ -26,11 +26,19 @@ export default defineContentConfig({
                         text: z.string(),
                         next: z.string(),
                         position: z.object({
-                            x: z.number(),
-                            y: z.number()
+                            x: z.number().or(z.string()),
+                            y: z.number().or(z.string())
                         }),
                     })
                 ),
+                characters: z.object({
+                    name: z.string(),
+                    src: z.string(),
+                    position: z.object({
+                        x: z.number().or(z.string()),
+                        y: z.number().or(z.string())
+                    }),
+                }).optional(),
                 background: z.object({
                     src: z.string(),
                 }),
