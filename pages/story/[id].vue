@@ -132,7 +132,7 @@ function onImgLoad() {
           ref="containerRef"
           style="position: relative; display: inline-block"
         >
-          <NuxtImg
+          <img
             v-if="imgSrc"
             ref="imgRef"
             :src="imgSrc"
@@ -193,7 +193,7 @@ function onImgLoad() {
             }"
             class="z-10"
           >
-            <NuxtImg
+            <img
               :src="character.src"
               alt="character"
               class="p-0 m-0 object-contain h-full z-0"

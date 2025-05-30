@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
+  ssr: false,
   devtools: { enabled: true },
   app: {
     head: {
@@ -10,7 +11,8 @@ export default defineNuxtConfig({
     pageTransition: {
       name: 'page',
       mode: 'out-in'
-    }
+    },
+    baseURL: '/'
   },
   modules: [
     '@nuxt/content',
@@ -34,5 +36,13 @@ export default defineNuxtConfig({
       xxl: 1536,
       '2xl': 1536
     }
-  }
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+    },
+  },
+  routeRules: {
+    "/story/**": { prerender: true },
+  },
 })
