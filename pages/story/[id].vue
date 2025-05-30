@@ -22,6 +22,9 @@ const imgSrc = ref("");
 const imgRef = ref<HTMLImageElement | null>(null);
 const imgWidth = ref(1080);
 const imgHeight = ref(1920);
+const containerRef = ref<HTMLDivElement | null>(null);
+const containerWidth = ref(1080);
+const containerHeight = ref(1920);
 const options = ref(
   (currentStory.value?.options || []) as unknown as {
     text: string;
@@ -87,20 +90,27 @@ watchEffect(() => {
   updateStory();
 });
 
+function updateContainerSize() {
+  if (containerRef.value) {
+    containerWidth.value = containerRef.value.clientWidth;
+    containerHeight.value = containerRef.value.clientHeight;
+  }
+}
+
 function calculatePosition(position: {
   x: number | string;
   y: number | string;
 }) {
   let x: number, y: number;
   if (typeof position.x === "string" && position.x.endsWith("%")) {
-    x = (parseFloat(position.x) / 100) * imgWidth.value;
+    x = (parseFloat(position.x) / 100) * containerWidth.value;
   } else {
-    x = (Number(position.x) / 1080) * imgWidth.value;
+    x = (Number(position.x) / 1080) * containerWidth.value;
   }
   if (typeof position.y === "string" && position.y.endsWith("%")) {
-    y = (parseFloat(position.y) / 100) * imgHeight.value;
+    y = (parseFloat(position.y) / 100) * containerHeight.value;
   } else {
-    y = (Number(position.y) / 1920) * imgHeight.value;
+    y = (Number(position.y) / 1920) * containerHeight.value;
   }
   return { x, y };
 }
@@ -110,6 +120,7 @@ function onImgLoad() {
     imgWidth.value = imgRef.value.clientWidth;
     imgHeight.value = imgRef.value.clientHeight;
   }
+  updateContainerSize();
 }
 </script>
 
@@ -117,8 +128,11 @@ function onImgLoad() {
   <div v-if="currentStory">
     <ClientOnly>
       <div class="p-0 m-0 h-dvh w-full">
-        <div style="position: relative; display: inline-block">
-          <img
+        <div
+          ref="containerRef"
+          style="position: relative; display: inline-block"
+        >
+          <NuxtImg
             v-if="imgSrc"
             ref="imgRef"
             :src="imgSrc"
@@ -179,7 +193,7 @@ function onImgLoad() {
             }"
             class="z-10"
           >
-            <img
+            <NuxtImg
               :src="character.src"
               alt="character"
               class="p-0 m-0 object-contain h-full z-0"
