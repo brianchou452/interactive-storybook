@@ -37,7 +37,7 @@
     }
   ],
   "background": {
-    "src": "/storybook/2/picture/3.png"
+    "src": "/storybook/2/picture/background.png"
   },
   "sound": {
     "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",

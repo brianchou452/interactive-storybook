@@ -26,26 +26,10 @@
         "x": 750,
         "y": 650
       }
-    },
-    {
-      "text": "選項3",
-      "next": "3",
-      "position": {
-        "x": 1050,
-        "y": 650
-      }
-    },
-    {
-      "text": "選項4",
-      "next": "3",
-      "position": {
-        "x": 1300,
-        "y": 650
-      }
     }
   ],
   "background": {
-    "src": "/storybook/2/picture/2.png"
+    "src": "/storybook/2/picture/background.png"
   },
   "sound": {
     "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",

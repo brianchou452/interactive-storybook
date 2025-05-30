@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { nextTick, onMounted, ref, watchEffect } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 
 const route = useRoute();
-const storyId = route.params.id as string;
-const currentPage = route.query.page || "1";
+const storyIdWithPageID = route.params.id as string;
+const storyId = storyIdWithPageID.split("X")[0];
+const currentPage = storyIdWithPageID.split("X")[1] || "1";
 
 const { data: currentStory } = await useAsyncData(
   "stories",
@@ -16,10 +17,11 @@ const { data: currentStory } = await useAsyncData(
   },
   { immediate: true }
 );
+
 const imgSrc = ref("");
 const imgRef = ref<HTMLImageElement | null>(null);
-const imgWidth = ref(1920);
-const imgHeight = ref(1080);
+const imgWidth = ref(1080);
+const imgHeight = ref(1920);
 const options = ref(
   (currentStory.value?.options || []) as unknown as {
     text: string;
@@ -36,18 +38,6 @@ const contents = ref(
     };
   }[]
 );
-
-async function updateImageSize() {
-  await nextTick();
-  if (imgRef.value) {
-    imgWidth.value = imgRef.value.naturalWidth || imgRef.value.width || 1920;
-    imgHeight.value = imgRef.value.naturalHeight || imgRef.value.height || 1080;
-    if (imgRef.value.clientWidth && imgRef.value.clientHeight) {
-      imgWidth.value = imgRef.value.clientWidth;
-      imgHeight.value = imgRef.value.clientHeight;
-    }
-  }
-}
 
 function updateStory() {
   if (typeof window !== "undefined" && currentStory.value?.sound) {
@@ -73,63 +63,88 @@ function updateStory() {
   }
 }
 
-function goToPage(nextPageId: string) {
-  window.location.href = `/story/${storyId}?page=${nextPageId}`;
-}
-
 onMounted(() => {
-  updateImageSize();
+  currentStory.value?.options.forEach((option) => {
+    preloadRouteComponents(`/story/${storyId}X${option.next}`);
+  });
 });
 
 watchEffect(() => {
   updateStory();
-  updateImageSize();
 });
 
-function calculatePosition(position: { x: number; y: number }) {
-  return {
-    x: (position.x / 1920) * imgWidth.value,
-    y: (position.y / 1080) * imgHeight.value,
-  };
+function calculatePosition(position: {
+  x: number | string;
+  y: number | string;
+}) {
+  let x: number, y: number;
+  if (typeof position.x === "string" && position.x.endsWith("%")) {
+    x = (parseFloat(position.x) / 100) * imgWidth.value;
+  } else {
+    x = (Number(position.x) / 1080) * imgWidth.value;
+  }
+  if (typeof position.y === "string" && position.y.endsWith("%")) {
+    y = (parseFloat(position.y) / 100) * imgHeight.value;
+  } else {
+    y = (Number(position.y) / 1920) * imgHeight.value;
+  }
+  return { x, y };
+}
+
+function onImgLoad() {
+  if (imgRef.value) {
+    imgWidth.value = imgRef.value.clientWidth;
+    imgHeight.value = imgRef.value.clientHeight;
+  }
 }
 </script>
 
 <template>
   <div v-if="currentStory">
     <ClientOnly>
-      <div style="position: relative; display: inline-block">
-        <img
-          v-if="imgSrc"
-          ref="imgRef"
-          :src="imgSrc"
-          alt="動態圖片"
-          style="display: block; max-width: 100%; height: auto"
-          @load="updateImageSize"
-        />
-        <div
-          v-for="content in contents"
-          :key="content.text"
-          :style="{
-            position: 'absolute',
-            top: `${calculatePosition(content.position).y}px`,
-            left: `${calculatePosition(content.position).x}px`,
-            transform: 'translate(-50%, -50%)',
-            pointerEvents: 'none',
-          }"
-        >
-          <p>{{ content.text }}</p>
-        </div>
-        <div
-          v-for="option in options"
-          :key="option.next"
-          :style="{
-            position: 'absolute',
-            top: `${calculatePosition(option.position).y}px`,
-            left: `${calculatePosition(option.position).x}px`,
-            transform: 'translate(-50%, -50%)',
-          }"
-        >
-          <button @click="goToPage(option.next)">{{ option.text }}</button>
+      <div class="p-0 m-0 h-full w-full">
+        <div style="position: relative; display: inline-block">
+          <div
+            v-for="content in contents"
+            :key="content.text"
+            :style="{
+              position: 'absolute',
+              top: `${calculatePosition(content.position).y}px`,
+              left: `${calculatePosition(content.position).x}px`,
+              // transform: 'translate(-50%, -50%)',
+              pointerEvents: 'none',
+            }"
+            class="w-full"
+          >
+            <p class="p-2">{{ content.text }}</p>
+          </div>
+          <div
+            v-for="option in options"
+            :key="option.next"
+            :style="{
+              position: 'absolute',
+              top: `${calculatePosition(option.position).y}px`,
+              left: `${calculatePosition(option.position).x}px`,
+              transform: 'translate(-50%, -50%)',
+            }"
+          >
+            <NuxtLink
+              :to="{
+                name: 'story-id',
+                params: { id: `${storyId}X${option.next}` },
+              }"
+            >
+              {{ option.text }}
+            </NuxtLink>
+          </div>
+          <img
+            v-if="imgSrc"
+            ref="imgRef"
+            :src="imgSrc"
+            alt="動態圖片"
+            class="p-0 m-0 object-contain h-full"
+            @load="onImgLoad"
+          />
         </div>
       </div>
     </ClientOnly>
