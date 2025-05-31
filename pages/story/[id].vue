@@ -135,7 +135,7 @@ function onImgLoad() {
 <template>
   <div v-if="currentStory">
     <ClientOnly>
-      <div class="p-0 m-0 h-dvh w-full">
+      <div class="p-0 m-0 h-full w-full">
         <div
           ref="containerRef"
           style="position: relative; display: inline-block"
