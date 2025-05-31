@@ -6,7 +6,12 @@
     @update:open="$emit('update:open', $event)"
     @close="onClose"
   >
-    <UButton label="加入物品" color="neutral" />
+    <UButton
+      icon="i-heroicons-plus"
+      color="primary"
+      variant="soft"
+      class="w-16 h-16 flex items-center justify-center"
+    />
     <template #body>
       <QRScanner ref="qrScannerRef" @scan="onScan" />
     </template>
@@ -15,6 +20,8 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import type { Item } from "~/stores/backpack";
+import { useBackpacktStore } from "~/stores/backpack";
 import QRScanner from "./QRScanner.vue";
 const emit = defineEmits(["close", "update:open", "scan"]);
 const _props = defineProps<{
@@ -25,24 +32,21 @@ const toast = useToast();
 const WORD_EXTERNAL_QRCODE = "非允許的 QRCode";
 const availableProps = ref<{
   description: string;
-  properties: {
-    name: string;
-    id: string;
-    src: string;
-    description: string;
-  }[];
+  properties: Item[];
 }>();
 const qrScannerRef = ref<InstanceType<typeof QRScanner> | null>(null);
 
 function onScan(result: string) {
   emit("scan", result);
   console.log("掃描結果:", result);
-  handleToast(result);
   let matched = false;
+  const backpackStore = useBackpacktStore();
   availableProps.value?.properties.forEach((item) => {
     if (item.id === result) {
       matched = true;
       console.log("掃描成功:", item);
+      handleToast(`成功將${item.name}加入背包`);
+      backpackStore.addItem(item);
       emit("update:open", false); // 掃描成功時自動關閉 modal
     }
   });
