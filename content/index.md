@@ -1,3 +1,3 @@
-# Test index
+# 這是測試頁面
 
-test
+[點我到故事](/story/2/)

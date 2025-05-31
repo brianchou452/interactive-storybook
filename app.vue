@@ -11,7 +11,12 @@ useHead({
 </script>
 
 <template>
-  <UApp>
+  <UApp
+    :toaster="{
+      position: 'top-center',
+      duration: 2000,
+    }"
+  >
     <div class="fullscreen-black-bg">
       <div
         class="fixed-vertical-container"

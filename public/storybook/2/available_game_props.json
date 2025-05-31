@@ -1,0 +1,35 @@
+{
+  "description": "玩家可以使用的道具",
+  "properties": [
+    {
+      "name": "麵包",
+      "id": "麵包:a6cfb593-a9fe-40bb-b252-eae5bd2e1345:0",
+      "src": "/img/loading.gif",
+      "description": ""
+    },
+    {
+      "name": "水",
+      "id": "水:f718b922-2c38-41c7-af65-732ace6f94c3:0",
+      "src": "/img/loading.gif",
+      "description": ""
+    },
+    {
+      "name": "繩子",
+      "id": "繩子:d1534071-5923-40f8-b8f3-4c3aca050ef2:0",
+      "src": "/img/loading.gif",
+      "description": ""
+    },
+    {
+      "name": "匕首",
+      "id": "匕首:6fc84e2d-bcf0-4767-b049-d5d0d4cba25c:0",
+      "src": "/img/loading.gif",
+      "description": ""
+    },
+    {
+      "name": "金幣",
+      "id": "金幣:574651dd-a1eb-4577-a556-8717b030caa1:0",
+      "src": "/img/loading.gif",
+      "description": ""
+    }
+  ]
+}

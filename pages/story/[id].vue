@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { onMounted, ref, watchEffect } from "vue";
+import BackpackModal from "~/components/BackpackModal.vue";
 import CharacterImage from "~/components/CharacterImage.vue";
 import ContentText from "~/components/ContentText.vue";
 import OptionButton from "~/components/OptionButton.vue";
+import ScannerModal from "~/components/ScannerModal.vue";
 
 const route = useRoute();
 const storyIdWithPageID = route.params.id as string;
@@ -54,6 +56,9 @@ const characters = ref(
     };
   }[]
 );
+
+const backpackModel = ref(false);
+const scannerModel = ref(false);
 
 function updateStory() {
   if (currentStory.value?.background) {
@@ -173,6 +178,20 @@ function onImgLoad() {
             :position="character.position"
             :calculate-position="calculatePosition"
           />
+
+          <BackpackModal
+            :open="backpackModel"
+            @update:open="backpackModel = $event"
+            @close="backpackModel = false"
+          >
+            <template #scanner>
+              <ScannerModal
+                :open="scannerModel"
+                @update:open="scannerModel = $event"
+                @close="scannerModel = false"
+              />
+            </template>
+          </BackpackModal>
         </div>
       </div>
     </ClientOnly>
