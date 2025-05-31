@@ -5,6 +5,7 @@ import CharacterImage from "~/components/CharacterImage.vue";
 import ContentText from "~/components/ContentText.vue";
 import OptionButton from "~/components/OptionButton.vue";
 import ScannerModal from "~/components/ScannerModal.vue";
+import type { Option, Position } from "./types";
 
 const route = useRoute();
 const storyIdWithPageID = route.params.id as string;
@@ -30,13 +31,8 @@ const imgHeight = ref(1920);
 const containerRef = ref<HTMLDivElement | null>(null);
 const containerWidth = ref(1080);
 const containerHeight = ref(1920);
-const options = ref(
-  (currentStory.value?.options || []) as unknown as {
-    text: string;
-    next: string;
-    position: { x: number | string; y: number | string };
-  }[]
-);
+
+const options = ref((currentStory.value?.options || []) as unknown as Option[]);
 const contents = ref(
   (currentStory.value?.content || []) as unknown as {
     text: string;
@@ -50,10 +46,7 @@ const characters = ref(
   (currentStory.value?.characters || []) as unknown as {
     name: string;
     src: string;
-    position: {
-      x: number | string;
-      y: number | string;
-    };
+    position: Position;
   }[]
 );
 
@@ -65,24 +58,15 @@ function updateStory() {
     imgSrc.value = currentStory.value.background.src;
   }
   if (currentStory.value?.options) {
-    options.value = currentStory.value.options.map((option) => ({
-      text: option.text,
-      next: option.next,
-      position: option.position,
-    }));
+    options.value = currentStory.value.options.map((option) => option);
   }
   if (currentStory.value?.content) {
-    contents.value = currentStory.value.content.map((content) => ({
-      text: content.text,
-      position: content.position,
-    }));
+    contents.value = currentStory.value.content.map((content) => content);
   }
   if (Array.isArray(currentStory.value?.characters)) {
-    characters.value = currentStory.value.characters.map((character) => ({
-      name: character.text,
-      src: character.src,
-      position: character.position,
-    }));
+    characters.value = currentStory.value.characters.map(
+      (character) => character
+    );
   } else {
     characters.value = [];
   }
@@ -165,9 +149,7 @@ function onImgLoad() {
           <OptionButton
             v-for="option in options"
             :key="option.next"
-            :text="option.text"
-            :next="option.next"
-            :position="option.position"
+            :option="option"
             :story-id="storyId"
             :calculate-position="calculatePosition"
           />

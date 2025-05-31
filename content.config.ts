@@ -29,6 +29,7 @@ export default defineContentConfig({
                             x: z.number().or(z.string()),
                             y: z.number().or(z.string())
                         }),
+                        requireItems: z.array(z.string()).optional(),
                     })
                 ),
                 characters: z.object({
