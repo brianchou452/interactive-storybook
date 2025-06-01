@@ -7,12 +7,12 @@
   >
     <UButton
       :avatar="{
-        src: 'https://github.com/nuxt.png',
+        src: '/storybook/2/picture/背包.png',
       }"
-      size="md"
+      size="xl"
       color="neutral"
       variant="outline"
-      class="absolute bottom-8 right-4"
+      class="absolute bottom-8 right-4 z-50"
     >
       背包
     </UButton>

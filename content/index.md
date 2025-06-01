@@ -23,3 +23,19 @@
 ### 匕首
 
 ![image](/storybook/2/qrcode/匕首.webp)
+
+### 斧頭
+
+![image](/storybook/2/qrcode/斧頭.webp)
+
+### 金斧頭
+
+![image](/storybook/2/qrcode/金斧頭.webp)
+
+### 指南針
+
+![image](/storybook/2/qrcode/指南針.webp)
+
+### 斗篷
+
+![image](/storybook/2/qrcode/斗篷.webp)

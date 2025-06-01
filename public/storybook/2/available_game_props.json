@@ -4,7 +4,7 @@
     {
       "name": "麵包",
       "id": "麵包:a6cfb593-a9fe-40bb-b252-eae5bd2e1345:0",
-      "src": "/img/loading.gif",
+      "src": "/storybook/2/picture/麵包.png",
       "description": ""
     },
     {
@@ -16,19 +16,43 @@
     {
       "name": "繩子",
       "id": "繩子:d1534071-5923-40f8-b8f3-4c3aca050ef2:0",
-      "src": "/img/loading.gif",
+      "src": "/storybook/2/picture/繩子.png",
       "description": ""
     },
     {
       "name": "匕首",
       "id": "匕首:6fc84e2d-bcf0-4767-b049-d5d0d4cba25c:0",
-      "src": "/img/loading.gif",
+      "src": "/storybook/2/picture/匕首.png",
       "description": ""
     },
     {
       "name": "金幣",
       "id": "金幣:574651dd-a1eb-4577-a556-8717b030caa1:0",
       "src": "/img/loading.gif",
+      "description": ""
+    },
+    {
+      "name": "斧頭",
+      "id": "斧頭:9174c4e8-2f6d-4aef-9abf-7dd748c022e6:0",
+      "src": "/storybook/2/picture/斧頭.png",
+      "description": ""
+    },
+    {
+      "name": "金斧頭",
+      "id": "金斧頭:dc96ef0e-8eed-403f-8eed-db1925ba841c:0",
+      "src": "/storybook/2/picture/金斧頭.png",
+      "description": ""
+    },
+    {
+      "name": "指南針",
+      "id": "指南針:8193eedb-b2d1-4814-8d0a-37bf9e2771f2:0",
+      "src": "/storybook/2/picture/指南針.png",
+      "description": ""
+    },
+    {
+      "name": "斗篷",
+      "id": "斗篷:1b42c6f6-6914-4b05-b025-ddbf23cbeeaa:0",
+      "src": "/storybook/2/picture/斗篷.png",
       "description": ""
     }
   ]
