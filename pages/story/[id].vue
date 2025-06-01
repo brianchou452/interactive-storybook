@@ -5,7 +5,7 @@ import CharacterImage from "~/components/CharacterImage.vue";
 import ContentText from "~/components/ContentText.vue";
 import OptionButton from "~/components/OptionButton.vue";
 import ScannerModal from "~/components/ScannerModal.vue";
-import type { Option, Position } from "./types";
+import type { Option, Position } from "../../components/types";
 
 const route = useRoute();
 const storyIdWithPageID = route.params.id as string;

@@ -16,7 +16,7 @@
 
 <script lang="ts" setup>
 import { useRouter } from "vue-router";
-import type { Option, Position } from "~/pages/story/types";
+import type { Option, Position } from "~/components/types";
 import { useBackpacktStore } from "~/stores/backpack";
 
 const { option, storyId, calculatePosition } = defineProps<{

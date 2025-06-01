@@ -8,11 +8,13 @@
     }"
     class="w-full z-30"
   >
-    <p class="p-2">{{ text }}</p>
+    <p ref="storyTextRef" class="p-2"></p>
   </div>
 </template>
 
 <script lang="ts" setup>
+import Typed from "typed.js";
+import { onMounted, ref } from "vue";
 const { text, position, calculatePosition } = defineProps<{
   text: string;
   position: { x: number | string; y: number | string };
@@ -21,4 +23,16 @@ const { text, position, calculatePosition } = defineProps<{
     y: number;
   };
 }>();
+
+const storyTextRef = ref<HTMLElement | null>(null);
+let _typedInstance: Typed | null = null;
+
+onMounted(() => {
+  if (storyTextRef.value) {
+    _typedInstance = new Typed(storyTextRef.value, {
+      strings: [text],
+      typeSpeed: 50,
+    });
+  }
+});
 </script>
