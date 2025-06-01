@@ -1,0 +1,30 @@
+{
+  "storyId": "2",
+  "pageId": "31-2",
+  "content": [
+    {
+      "text": "他告訴你自己才是那名遭到通緝的邪惡魔法師，如果不是這些蜘蛛，自己也不會那麼早就被揭穿。「既然你知道了我的真實身份，那麼我只好送你去安息了，拜拜～」他手中的魔杖朝你發射出一束紅色的光，你感到全身劇痛。",
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "options": [
+    {
+      "text": "重新開始",
+      "next": "1",
+      "position": {
+        "x": "50%",
+        "y": "80%"
+      }
+    }
+  ],
+  "background": {
+    "src": "/storybook/2/picture/background.png"
+  },
+  "sound": {
+    "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",
+    "volume": 0.5
+  }
+}

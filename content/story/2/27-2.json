@@ -1,0 +1,30 @@
+{
+  "storyId": "2",
+  "pageId": "27-2",
+  "content": [
+    {
+      "text": "十分鐘過去，你已經精疲力盡，身上也出現不少的傷口，但少年始終沒有來幫助你。漸漸的，你的身體支撐不下，消失在噴火龍噴出的熊熊烈火中。",
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "options": [
+    {
+      "text": "重新開始",
+      "next": "1",
+      "position": {
+        "x": "50%",
+        "y": "80%"
+      }
+    }
+  ],
+  "background": {
+    "src": "/storybook/2/picture/background.png"
+  },
+  "sound": {
+    "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",
+    "volume": 0.5
+  }
+}

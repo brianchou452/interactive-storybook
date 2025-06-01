@@ -1,0 +1,37 @@
+{
+  "storyId": "2",
+  "pageId": "30",
+  "content": [
+    {
+      "text": "【💀死亡結局💀】",
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "text": "你們決定回到洞穴中與噴火龍對抗。少年提議你來吸引噴火龍的注意，他來搶走寶箱並與你一起逃出洞穴。於是，你開始吸引噴火龍的注意。",
+      "position": {
+        "x": 0,
+        "y": 60
+      }
+    }
+  ],
+  "options": [
+    {
+      "text": "繼續",
+      "next": "30-2",
+      "position": {
+        "x": "50%",
+        "y": "80%"
+      }
+    }
+  ],
+  "background": {
+    "src": "/storybook/2/picture/background.png"
+  },
+  "sound": {
+    "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",
+    "volume": 0.5
+  }
+}
