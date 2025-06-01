@@ -1,0 +1,40 @@
+{
+  "storyId": "2",
+  "pageId": "11",
+  "content": [
+    {
+      "text": "使用金斧頭打暈少年。巫師道謝，並告知主角此少年是名遭到通緝的邪惡魔法師。巫師帶著少年離開前，贈送主角一件斗篷，此斗篷可以防禦「迷霧森林」中的1次攻擊。",
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "options": [
+    {
+      "text": "繼續",
+      "next": "13",
+      "position": {
+        "x": "50%",
+        "y": "80%"
+      }
+    }
+  ],
+  "characters": [
+    {
+      "name": "森林精靈",
+      "src": "/storybook/2/picture/森林精靈.png",
+      "position": {
+        "x": "0",
+        "y": "0"
+      }
+    }
+  ],
+  "background": {
+    "src": "/storybook/2/picture/background.png"
+  },
+  "sound": {
+    "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",
+    "volume": 0.5
+  }
+}

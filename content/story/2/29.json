@@ -1,0 +1,38 @@
+{
+  "storyId": "2",
+  "pageId": "29",
+  "content": [
+    {
+      "text": "你與少年開始與蜘蛛群對抗。三十分鐘後，因為蜘蛛的數量太多，你的身體滿滿地感到疲憊，就在你要堅持不住的時候，旁邊的蜘蛛突然一群一群的爆炸。你周圍的蜘蛛開始撤離，你不知道發生了什麼，往爆炸源看去。你看到了一名身穿黑袍的男人，你認為蜘蛛群會爆炸應該是這名男子做的。你決定……",
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "options": [
+    {
+      "text": "過去詢問那名男子",
+      "next": "31",
+      "position": {
+        "x": "50%",
+        "y": "80%"
+      }
+    },
+    {
+      "text": "立刻離開",
+      "next": "32",
+      "position": {
+        "x": "50%",
+        "y": "90%"
+      }
+    }
+  ],
+  "background": {
+    "src": "/storybook/2/picture/background.png"
+  },
+  "sound": {
+    "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",
+    "volume": 0.5
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "storyId": "2",
+  "pageId": "10",
+  "content": [
+    {
+      "text": "主角聽到了打鬥聲及求救聲。在樹林和草叢的遮掩下，看見了一名巫師正在攻擊一名少年。",
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "options": [
+    {
+      "text": "幫助巫師，成功抓住少年。",
+      "next": "11",
+      "position": {
+        "x": "50%",
+        "y": "70%"
+      },
+      "requireItems": ["金斧頭:dc96ef0e-8eed-403f-8eed-db1925ba841c:0"]
+    },
+    {
+      "text": "幫助少年，成功趕跑巫師。",
+      "next": "12",
+      "position": {
+        "x": "50%",
+        "y": "80%"
+      }
+    },
+    {
+      "text": "避開戰鬥，尋找其他道路。",
+      "next": "4",
+      "position": {
+        "x": "50%",
+        "y": "90%"
+      }
+    }
+  ],
+  "background": {
+    "src": "/storybook/2/picture/background.png"
+  },
+  "sound": {
+    "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",
+    "volume": 0.5
+  }
+}

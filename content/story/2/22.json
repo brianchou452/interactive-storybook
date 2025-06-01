@@ -1,0 +1,43 @@
+{
+  "storyId": "2",
+  "pageId": "22",
+  "content": [
+    {
+      "text": "你選擇跟精靈道別，精靈說必須拿有價值的東西做交換，否則要跟他回去村落。你決定……",
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  ],
+  "options": [
+    {
+      "text": "給他",
+      "next": "23",
+      "position": {
+        "x": "50%",
+        "y": "80%"
+      },
+      "requireItems": [
+        "斗篷:1b42c6f6-6914-4b05-b025-ddbf23cbeeaa:0",
+        "斧頭:9174c4e8-2f6d-4aef-9abf-7dd748c022e6:0",
+        "金幣:574651dd-a1eb-4577-a556-8717b030caa1:0"
+      ]
+    },
+    {
+      "text": "跟精靈回村落",
+      "next": "21",
+      "position": {
+        "x": "50%",
+        "y": "80%"
+      }
+    }
+  ],
+  "background": {
+    "src": "/storybook/2/picture/background.png"
+  },
+  "sound": {
+    "src": "/storybook/2/sound/file_example_MP3_5MG.mp3",
+    "volume": 0.5
+  }
+}
